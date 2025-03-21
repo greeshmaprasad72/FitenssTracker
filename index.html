@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-   
+
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <header class="header">
         <div>
@@ -24,6 +26,52 @@
     </nav>
     <main>
         <h1>Welcome Home</h1>
+        <div class="carousel">
+            <div class="slides">
+                <img src="images/slide1.jpg" class="slide active" alt="Slide 1">
+                <img src="images/slide2.jpg" class="slide" alt="Slide 2">
+                <img src="images/slide3.jpg" class="slide" alt="Slide 3">
+                <img src="images/slide4.jpg" class="slide" alt="Slide 4">
+            </div>
+            <div class="dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+            </div>
+        </div>
+        <div class="content">
+            <h2>Create a Fitness Plan Just for You</h2>
+            <p>
+                Everyone's body and goals are different — that's why a personalized fitness plan matters. Whether you're
+                aiming to lose weight, build muscle, or boost your endurance, we tailor your workout based on your
+                weight, lifestyle, and preferences. Get a plan that works for you and stay motivated every step of the
+                way!</p>
+        </div>
+        <h1>Fitness Gallery</h1>
+        <div class="gallery">
+            <img src="images/weightlifting.jpg" alt="Weightlifting" class="gallery-img"
+                data-caption="Strength training builds muscle and burns fat.">
+            <img src="images/treadmill.jpg" alt="Treadmill Running" class="gallery-img"
+                data-caption="Cardio workouts improve heart health and stamina.">
+            <img src="images/yoga.jpg" alt="Yoga Session" class="gallery-img"
+                data-caption="Yoga helps improve flexibility and reduce stress.">
+            <img src="images/pushups.jpg" alt="Push-ups Workout" class="gallery-img"
+                data-caption="Bodyweight exercises are great for beginners.">
+            <img src="images/hiit.jpg" alt="HIIT Workout" class="gallery-img"
+                data-caption="HIIT burns calories quickly in short time.">
+            <img src="images/gym.jpg" alt="Gym Workout" class="gallery-img"
+                data-caption="A full gym workout covers all muscle groups.">
+        </div>
+
+        <!-- Overlay Preview -->
+        <div id="overlay">
+            <span id="close">&times;</span>
+            <div class="overlay-content">
+                <img id="overlay-img" src="">
+                <p id="caption-text"></p>
+            </div>
+        </div>
     </main>
     <footer>
         <div class="footer-container">
@@ -38,7 +86,7 @@
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-           
+
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <a><i class="fas fa-map-marker-alt"></i> 150 Stewart Avenue, Cambridge</a>
@@ -46,9 +94,13 @@
                 <a><i class="fas fa-phone"></i> +1 456 478 2541</a>
             </div>
         </div>
-       <div class="footer-bottom">
-        <p>&copy; 2025 Fitness Tracker. All rights reserved</p>
-       </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Fitness Tracker. All rights reserved</p>
+        </div>
     </footer>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="scripts/scripts.js"></script>
+
 </html>
