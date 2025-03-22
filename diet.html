@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div>
+            <h1>Fitness Tracker</h1>
+            <h3>Track Your Fitness Here</h3>
+        </div>
+    </header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="fitness_calculator.html">Calorie Calculator</a></li>
+            <li><a href="diet.html">Diet Plan</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Diet Tracker & BMI Calculator</h1>
+
+        <!-- BMI Calculator -->
+        <div class="section bmi-calculator">
+            <h2>BMI Calculator</h2>
+            <div class="section-header">
+                <button class="clear-btn" onclick="clearBMICalculator()">Clear</button>
+            </div>
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height">
+            <label for="age">Age:</label>
+            <input type="number" id="age">
+            <label for="sex">Sex:</label>
+            <select id="sex">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <label for="activity">Activity Level:</label>
+            <select id="activity">
+                <option value="1.2">Sedentary (little or no exercise)</option>
+                <option value="1.375">Lightly active (light exercise 1-3 days/week)</option>
+                <option value="1.55">Moderately active (moderate exercise 3-5 days/week)</option>
+                <option value="1.725">Very active (hard exercise 6-7 days/week)</option>
+                <option value="1.9">Extra active (very hard exercise & physical job)</option>
+            </select>
+            <button onclick="calculateBMI()">Calculate BMI & Daily Calories</button>
+            <div class="results">
+                <p id="bmi-result"></p>
+                <p id="bmi-category"></p>
+                <p id="daily-calories"></p>
+            </div>
+        </div>
+
+        <!-- Calorie Counter -->
+        <div class="section calorie-counter">
+            <h2>Calorie Tracker</h2>
+            <div class="section-header">
+                <button class="clear-btn" onclick="clearCalorieCounter()">Reset Daily Totals</button>
+            </div>
+
+            <div class="calorie-summary">
+                <div class="summary-item">
+                    <h3>Daily Goal</h3>
+                    <p id="calorie-goal">0</p>
+                </div>
+                <div class="summary-item">
+                    <h3>Consumed</h3>
+                    <p id="total-calories">0</p>
+                </div>
+                <div class="summary-item">
+                    <h3>Remaining</h3>
+                    <p id="remaining-calories">0</p>
+                </div>
+            </div>
+
+            <div class="nutrient-summary">
+                <div class="nutrient">
+                    <span>Protein:</span>
+                    <span id="protein-amount">0g</span>
+                </div>
+                <div class="nutrient">
+                    <span>Carbs:</span>
+                    <span id="carbs-amount">0g</span>
+                </div>
+                <div class="nutrient">
+                    <span>Fat:</span>
+                    <span id="fat-amount">0g</span>
+                </div>
+            </div>
+
+            <h3>Add Food</h3>
+            <div class="food-input">
+                <input type="text" id="food-name" placeholder="Food Name">
+                <input type="number" id="food-calories" placeholder="Calories">
+                <input type="number" id="food-protein" placeholder="Protein (g)">
+                <input type="number" id="food-carbs" placeholder="Carbs (g)">
+                <input type="number" id="food-fat" placeholder="Fat (g)">
+                <select id="meal-type">
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="snack">Snack</option>
+                </select>
+                <div class="button-group">
+                    <button onclick="addFood()">Add Food</button>
+                    <button class="clear-btn" onclick="clearFoodInputs()">Clear Form</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meal Planner -->
+        <div class="section meal-planner">
+            <h2>Meal Planner</h2>
+
+            <div class="tab-container">
+                <div class="tab active" onclick="showMealTab('today')">Today</div>
+                <div class="tab" onclick="showMealTab('weekly')">Weekly Plan</div>
+            </div>
+
+            <div id="today-tab" class="meal-tab">
+                <div class="section-header">
+                    <button class="clear-btn" onclick="clearTodayMeals()">Clear Today's Meals</button>
+                </div>
+                <div class="meal-container">
+                    <div class="meal-type">
+                        <h3>Breakfast</h3>
+                        <ul id="breakfast-list" class="meal-list"></ul>
+                    </div>
+                    <div class="meal-type">
+                        <h3>Lunch</h3>
+                        <ul id="lunch-list" class="meal-list"></ul>
+                    </div>
+                    <div class="meal-type">
+                        <h3>Dinner</h3>
+                        <ul id="dinner-list" class="meal-list"></ul>
+                    </div>
+                    <div class="meal-type">
+                        <h3>Snacks</h3>
+                        <ul id="snack-list" class="meal-list"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="weekly-tab" class="meal-tab" style="display: none;">
+                <div class="section-header">
+                    <button class="clear-btn" onclick="clearWeeklyPlan()">Clear Weekly Plan</button>
+                </div>
+                <div class="days-navigation">
+                    <button class="day-btn" onclick="showDayPlan(0)">Monday</button>
+                    <button class="day-btn" onclick="showDayPlan(1)">Tuesday</button>
+                    <button class="day-btn" onclick="showDayPlan(2)">Wednesday</button>
+                    <button class="day-btn" onclick="showDayPlan(3)">Thursday</button>
+                    <button class="day-btn" onclick="showDayPlan(4)">Friday</button>
+                    <button class="day-btn" onclick="showDayPlan(5)">Saturday</button>
+                    <button class="day-btn" onclick="showDayPlan(6)">Sunday</button>
+                </div>
+                <div id="weekly-plan-container">
+                    <h3 id="selected-day">Monday</h3>
+                    <div class="meal-input">
+                        <input type="text" id="planned-meal" placeholder="Meal">
+                        <input type="number" id="planned-calories" placeholder="Est. Calories">
+                        <select id="planned-meal-type">
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="snack">Snack</option>
+                        </select>
+                        <div class="button-group">
+                            <button onclick="addPlannedMeal()">Add to Plan</button>
+                            <button class="clear-btn" onclick="clearPlanInputs()">Clear Form</button>
+                        </div>
+                    </div>
+                    <div class="week-meal-container">
+                        <div class="meal-type">
+                            <h3>Breakfast</h3>
+                            <ul id="week-breakfast-list" class="meal-list"></ul>
+                        </div>
+                        <div class="meal-type">
+                            <h3>Lunch</h3>
+                            <ul id="week-lunch-list" class="meal-list"></ul>
+                        </div>
+                        <div class="meal-type">
+                            <h3>Dinner</h3>
+                            <ul id="week-dinner-list" class="meal-list"></ul>
+                        </div>
+                        <div class="meal-type">
+                            <h3>Snacks</h3>
+                            <ul id="week-snack-list" class="meal-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Food Diary -->
+        <div class="section food-diary">
+            <h2>Food Diary</h2>
+            <div class="section-header">
+                <button class="clear-btn" onclick="clearAllDiaryEntries()">Clear All Entries</button>
+            </div>
+            <div class="diary-date">
+                <label for="diary-date">Date:</label>
+                <input type="date" id="diary-date">
+            </div>
+            <div class="diary-entry">
+                <textarea id="diary-note" placeholder="How did you feel today? Any cravings or struggles?"></textarea>
+                <div class="button-group">
+                    <button onclick="saveNote()">Save Note</button>
+                    <button class="clear-btn" onclick="clearDiaryInput()">Clear Note</button>
+                </div>
+            </div>
+            <div id="diary-entries">
+                <!-- Diary entries will be displayed here -->
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Fitness Tracker</h3>
+                <p>Fitness tracker is your personal companion to track and analyze your workouts and diet.</p>
+            </div>
+            <div class="footer-container">
+                <div class="socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <a><i class="fas fa-map-marker-alt"></i> 150 Stewart Avenue, Cambridge</a>
+                <a><i class="fas fa-envelope"></i> fitness@gmail.com</a>
+                <a><i class="fas fa-phone"></i> +1 456 478 2541</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Fitness Tracker. All rights reserved</p>
+        </div>
+    </footer>
+    <script src="scripts/diet.js"></script>
+    <script src="scripts/calculator_script.js"></script>
+</body>
+
+</html>

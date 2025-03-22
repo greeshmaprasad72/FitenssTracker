@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <header class="header">
         <div>
@@ -21,85 +22,85 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="#">Calorie Calculator</a></li>
-            <li><a href="#">Diet Plan</a></li>
+            <li><a href="diet.html">Diet Plan</a></li>
         </ul>
     </nav>
-   
-        <main class="clorie_calculator_main">
-           <div class="workout-form-container">
+
+    <main class="clorie_calculator_main">
+        <div class="workout-form-container">
             <h2>Enter workout details </h2>
-           
-                <div class="profile-form">
-                    <h3>Your Profile</h3>
-                    <div class="form-data">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" required>
-                        </div>
-                        <div class="form-data">
-                            <label for="age">Age</label>
-                            <input type="number" id="age" required>
-                            </div>
-                        <div class="form-data">
-                            <label for="weight">Weight</label>
-                            <input type="number" id="weight" required>
-                        </div>
-                        <div class="form-data">
-                            <label for="height">Height</label>
-                            <input type="number" id="height" required>
-                        </div>
-                        <div class="form-data">
-                            <label for="gender">Gender</label>
-                            <select id="gender-type" required>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
-                        </div>
-                        <button type="submit" id="save-profile" class="save-workout-button">Save Profile</button>
-              
-            </div>
-            <form id="save-workout-form"> 
-            <div class="form-data">
-                <label for="workout-type">Workout Type</label>
-                <select id="workout-type" required>
-                    <option value="cardio">Cardio</option>
-                    <option value="Strength">Strength Training</option>
-                    <option value="Yoga">Yoga</option>
-                    <option value="Flexibility">Flexibility</option>
-                    <option value="Others">Others</option>
-                </select>
-            </div>
-            <div class="form-data">
-                <label for="workout-name">Workout Name</label>
-                <input type="text" id="workout-name" placeholder="eg: Running, Walking, Swimming" required>
-            </div>
-            <div class="form-data">
-                <label for="workout-date">Workout Date</label>
-                <input type="date" id="workout-date" required>
-            </div>
-        <div class="form-data">
-            <label for="workout-duration">Duration</label>
-            <input type="number" id="workout-duration" required>
+            <!-- 
+            <div class="profile-form">
+                <h3>Your Profile</h3>
+                <div class="form-data">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-data">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" required>
+                </div>
+                <div class="form-data">
+                    <label for="weight">Weight</label>
+                    <input type="number" id="weight" required>
+                </div>
+                <div class="form-data">
+                    <label for="height">Height</label>
+                    <input type="number" id="height" required>
+                </div>
+                <div class="form-data">
+                    <label for="gender-type">Gender</label>
+                    <select id="gender-type" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <button type="submit" id="save-profile" class="save-workout-button">Save Profile</button>
+            </div> -->
+
+            <form id="save-workout-form">
+                <div class="form-data">
+                    <label for="workout-type">Workout Type</label>
+                    <select id="workout-type" required>
+                        <option value="cardio">Cardio</option>
+                        <option value="Strength">Strength Training</option>
+                        <option value="Yoga">Yoga</option>
+                        <option value="Flexibility">Flexibility</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div class="form-data">
+                    <label for="workout-name">Workout Name</label>
+                    <input type="text" id="workout-name" placeholder="eg: Running, Walking, Swimming" required>
+                </div>
+                <div class="form-data">
+                    <label for="workout-date">Workout Date</label>
+                    <input type="date" id="workout-date" required>
+                </div>
+                <div class="form-data">
+                    <label for="workout-duration">Duration (Minutes)</label>
+                    <input type="number" id="workout-duration" required>
+                </div>
+                <div class="form-data">
+                    <label for="intensity">Intensity</label>
+                    <select id="intensity" required>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="form-data">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" rows="4" placeholder="Any additional notes"></textarea>
+                </div>
+                <button type="submit" class="save-workout-button">Save Workout</button>
+            </form>
         </div>
-        <div class="form-data">
-            <label for="intensity">Intensity</label>
-            <select id="intensity" required>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-            </select>
-        </div>
-        <div class="form-data">
-            <label for="notes">Notes</label>
-            <textarea id="notes" rows="4" placeholder="Any additional notes"></textarea>
-        </div>
-        <button type="submit" class="save-workout-button">Save Workout</button>
-    </form>      
-    </div>
-           <div class="workout-details-container">
+        <div class="workout-details-container">
             <h2>Your Fitness Journey</h2>
             <div class="workout-summary">
                 <div class="status">
-                    <span id="total-workout">0</span>
+                    <span id="total-workouts">0</span>
                     <p> Workouts</p>
                 </div>
                 <div class="status">
@@ -108,18 +109,40 @@
                 </div>
                 <div class="status">
                     <span id="total-calories">0</span>
-                    <p> 
+                    <p>
                         Calories
                     </p>
                 </div>
             </div>
+            <div class="filter-controls">
+                <select id="filter-type">
+                    <option value="all">All Types</option>
+                    <option value="cardio">Cardio</option>
+                    <option value="Strength Training">Strength training</option>
+                    <option value="Flexibility">Flexibility</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <select id="filter-intensity">
+                    <option value="all">All Intensities</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+
+                <select id="filter-sort">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="longest">Longest Duration</option>
+                    <option value="shortest">Shortest Duration</option>
+                </select>
+            </div>
             <div id="workout-list">
 
             </div>
-           </div>
-        </main>
-   
-  
+        </div>
+    </main>
+
     <footer>
         <div class="footer-container">
             <div class="footer-section">
